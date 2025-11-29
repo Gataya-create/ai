@@ -1,209 +1,226 @@
 <!doctype html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=0.8" />
-  <link rel="icon" type="image/x-icon" href="img/robot_icon.ico">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=0.8" />
+    <link rel="icon" type="image/x-icon" href="img/robot_icon.ico">
 
-<link rel="icon" type="image/png" sizes="32x32" href="img/assets/favicon-32.png">
-<link rel="icon" type="image/png" sizes="48x48" href="img/assets/favicon-48.png">
-<link rel="icon" type="image/png" sizes="96x96" href="img/assets/favicon-96.png">
-<link rel="icon" type="image/png" sizes="192x192" href="img/assets/favicon-192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/assets/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="img/assets/favicon-48.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="img/assets/favicon-96.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="img/assets/favicon-192.png">
 
-<link rel="apple-touch-icon" sizes="180x180" href="img/assets/favicon-192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/assets/favicon-192.png">
 
-  <title>AI ANALYZER</title>
-  <style>
-    :root{
-      --bg:#177f78; /* đổi nền xanh */
-      --teal:#f7f2ea; /* đảo màu cho nổi chữ */
-      --card:#ffffff;
-      --radius:12px;
-    }
-    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
-    body{background:var(--bg);display:grid;align-items:center;justify-content:center;padding:16px;color:var(--teal)}
-    .wrap{width:100%;max-width:1100px}
-    header{display:flex;align-items:center;gap:16px;margin-bottom:18px}
-    .logo{width:120px;height:120px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;color:var(--bg);font-weight:700}
-    h1{margin:0;font-size:20px;color:var(--teal)}
-    p.lead{margin:6px 0 22px;color:var(--teal)}
+    <title>AI ANALYZER</title>
+    <style>
+        :root{
+            --bg:#177f78; /* đổi nền xanh */
+            --teal:#f7f2ea; /* đảo màu cho nổi chữ */
+            --card:#ffffff;
+            --radius:12px;
+        }
+        html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
+        body{background:var(--bg);display:grid;align-items:center;justify-content:center;padding:16px;color:var(--teal)}
+        .wrap{width:100%;max-width:1100px}
+        header{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+        .logo{width:120px;height:120px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;color:var(--bg);font-weight:700}
+        h1{margin:0;font-size:20px;color:var(--teal)}
+        p.lead{margin:6px 0 22px;color:var(--teal)}
 
-    .gallery{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      grid-auto-rows:1fr;
-      gap:18px;
-    }
+        .gallery{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            grid-auto-rows:1fr;
+            gap:18px;
+        }
 
-    .card{
-      background:var(--card);
-      border-radius:var(--radius);
-      overflow:hidden;
-      box-shadow:0 6px 18px rgba(0,0,0,0.15);
-      display:flex;flex-direction:column;
-      transition:transform .2s ease, box-shadow .2s ease;
-    }
-    /* ******* QUAN TRỌNG: Loại bỏ hiệu ứng hover cho thẻ cha (figure) của ảnh đầu tiên nếu bạn muốn cảm giác click là mở popup thay vì link ******* */
-    /* Nếu bạn muốn giữ hiệu ứng: bỏ comment 2 dòng dưới */
-    /* .card:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,0.25)} */
-    .card a{display:block;text-decoration:none;color:inherit}
-    .card img{width:100%;height:350px;object-fit:cover;display:block}
-    .meta{padding:12px 14px}
-    .meta h3{margin:0;font-size:15px;color:#213;letter-spacing:0.2px}
-    .meta p{margin:6px 0 0;color:#666;font-size:13px}
+        .card{
+            background:var(--card);
+            border-radius:var(--radius);
+            overflow:hidden;
+            box-shadow:0 6px 18px rgba(0,0,0,0.15);
+            display:flex;flex-direction:column;
+            transition:transform .2s ease, box-shadow .2s ease;
+        }
+        .card:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,0.25)}
+        .card a{display:block;text-decoration:none;color:inherit}
+        .card img{width:100%;height:350px;object-fit:cover;display:block}
+        .meta{padding:12px 14px}
+        .meta h3{margin:0;font-size:15px;color:#213;letter-spacing:0.2px}
+        .meta p{margin:6px 0 0;color:#666;font-size:13px}
 
-    @media (max-width:900px){
-      .gallery{grid-template-columns:repeat(2,1fr)}
-    }
-    @media (max-width:520px){
-      .gallery{grid-template-columns:repeat(1,1fr)}
-      .card img{height:280px}
-    }
+        @media (max-width:900px){
+            .gallery{grid-template-columns:repeat(2,1fr)}
+        }
+        @media (max-width:520px){
+            .gallery{grid-template-columns:repeat(1,1fr)}
+            .card img{height:280px}
+        }
 
-    /* ************************************************* */
-    /* ************* CSS CHO MODAL/POPUP *************** */
-    /* ************************************************* */
-    .modal {
-        display: none; /* Ẩn Modal mặc định */
-        position: fixed; /* Giữ vị trí cố định trên màn hình */
-        z-index: 1000; /* Đảm bảo Modal nằm trên các nội dung khác */
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0,0,0,0.5); /* Nền mờ */
-    }
+        /* ------------------------------------------------ */
+        /* -------------- CSS CHO MODAL/POPUP ------------- */
+        /* ------------------------------------------------ */
+        .modal {
+            display: none; /* Ẩn Modal mặc định */
+            position: fixed; /* Giữ vị trí cố định trên màn hình */
+            z-index: 1000; /* Đảm bảo Modal nằm trên các nội dung khác */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5); /* Nền mờ */
+        }
 
-    .modal-content {
-        background-color: #fefefe;
-        margin: 15% auto; /* Canh giữa theo chiều dọc */
-        padding: 20px;
-        border: none;
-        width: 80%;
-        max-width: 350px;
-        text-align: center;
-        border-radius: 10px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        color: #333; /* Màu chữ cho nội dung Modal */
-    }
-    
-    .modal-content h3 {
-        margin-top: 0;
-        font-size: 18px;
-        color: #177f78; /* Màu xanh lá/teal */
-    }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* Canh giữa theo chiều dọc */
+            padding: 20px;
+            border: none;
+            width: 80%;
+            max-width: 350px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            color: #333; /* Màu chữ cho nội dung Modal */
+        }
+        
+        .modal-content h3 {
+            margin-top: 0;
+            font-size: 18px;
+            color: #177f78; /* Màu xanh lá/teal */
+        }
 
-    .close-button {
-        color: #aaa;
-        float: right;
-        font-size: 30px;
-        font-weight: bold;
-        line-height: 1;
-    }
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 30px;
+            font-weight: bold;
+            line-height: 1;
+        }
 
-    .close-button:hover,
-    .close-button:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-    }
+        .close-button:hover,
+        .close-button:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
 
-    .modal-link-button {
-        display: block; 
-        background-color: #177f78; /* Màu nền nút */
-        color: white;
-        padding: 12px 15px;
-        margin: 12px 0;
-        text-align: center;
-        text-decoration: none;
-        border-radius: 6px;
-        font-weight: 600;
-        transition: background-color 0.3s;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
+        .modal-link-button {
+            display: block; 
+            background-color: #177f78; /* Màu nền nút */
+            color: white;
+            padding: 12px 15px;
+            margin: 12px 0;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
 
-    .modal-link-button:hover {
-        background-color: #115c57;
-    }
-  </style>
+        .modal-link-button:hover {
+            background-color: #115c57;
+        }
+    </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="logo"><img src="img/logo.png" alt="logo" /></div>
-      <div>
-        <h1>AI Chart Analyzer</h1>
-        <p class="lead">Muốn bay cao? Hãy chịu được gió lớn.</p>
-      </div>
-     
-    </header>
+    <div class="wrap">
+        <header>
+            <div class="logo"><img src="img/logo.png" alt="logo" /></div>
+            <div>
+                <h1>AI Chart Analyzer</h1>
+                <p class="lead">Muốn bay cao? Hãy chịu được gió lớn.</p>
+            </div>
+            
+        </header>
 
-    <main>
-      <section class="gallery" aria-label="AI Chart Analyzer mini">
-                    <figure class="card">
-            <img src="img/5.PNG" alt="Ảnh 5" id="image5" style="cursor: pointer;" />
-            <figcaption class="meta"><h3>AI Analyzer VIP</h3><p></p></figcaption>
-          </figure>
-          
-          <figure class="card">
-          <a href="https://ai.studio/apps/drive/1Hz6jQhdu3tW5feKCr7d6L_oRQ8qBjrd9" target="_blank">
-            <img src="img/5.PNG" alt="Ảnh 5" />
-            <figcaption class="meta"><h3>AI Price Action Analyzer V2 </h3><p>Phân tích Xu Hướng</p></figcaption>
-          </a>
-        </figure>
-          <figure class="card">
-          <a href="https://ai.studio/apps/drive/1BQdGlsTpwq8Ef3wwUbKloASkeHgM-vXW" target="_blank">
-            <img src="img/5.png" alt="Ảnh 1" />
-            <figcaption class="meta"><h3>ICT Chart Analyst AI</h3><p>AI Phân Tích Biểu Đồ ICT</p></figcaption>
-          </a>
-        </figure>
-        <figure class="card">
-          <a href="https://ai.studio/apps/drive/1O-cdoB8z9JKBOtBeMPPPeJRYFGRNxpsT" target="_blank">
-            <img src="img/3.png" alt="Ảnh 4" />
-            <figcaption class="meta"><h3>AI Market Supercharts Analyzer</h3><p> phân tích biểu đồ kỹ thuật đa lớp</p></figcaption>
-          </a>
-       </figure>
+        <main>
+            <section class="gallery" aria-label="AI Chart Analyzer mini">
+                <figure class="card">
+                    <a href="https://ai.studio/apps/drive/1kaE1gZFDWzfv4upMFcFrgSC72qrYZQ_P" 
+                       target="_blank" 
+                       id="image5-link" 
+                       data-link2="link2_cua_ban_o_day">
+                        <img src="img/5.PNG" alt="Ảnh 5" />
+                        <figcaption class="meta"><h3>AI Analyzer VIP</h3><p></p></figcaption>
+                    </a>
+                </figure>
+                
+                <figure class="card">
+                <a href="https://ai.studio/apps/drive/1Hz6jQhdu3tW5feKCr7d6L_oRQ8qBjrd9" target="_blank">
+                    <img src="img/5.PNG" alt="Ảnh 5" />
+                    <figcaption class="meta"><h3>AI Price Action Analyzer V2 </h3><p>Phân tích Xu Hướng</p></figcaption>
+                </a>
+                </figure>
+                <figure class="card">
+                <a href="https://ai.studio/apps/drive/1BQdGlsTpwq8Ef3wwUbKloASkeHgM-vXW" target="_blank">
+                    <img src="img/5.png" alt="Ảnh 1" />
+                    <figcaption class="meta"><h3>ICT Chart Analyst AI</h3><p>AI Phân Tích Biểu Đồ ICT</p></figcaption>
+                </a>
+                </figure>
+                <figure class="card">
+                <a href="https://ai.studio/apps/drive/1O-cdoB8z9JKBOtBeMPPPeJRYFGRNxpsT" target="_blank">
+                    <img src="img/3.png" alt="Ảnh 4" />
+                    <figcaption class="meta"><h3>AI Market Supercharts Analyzer</h3><p> phân tích biểu đồ kỹ thuật đa lớp</p></figcaption>
+                </a>
+                </figure>
 
-    <figure class="card">
-          <a href="https://ai.studio/apps/drive/18XwUEaP2pRpkTSOrwHmvAIbzoPFp2YUs" target="_blank">
-            <img src="img/6.png" alt="Ảnh 5" />
-            <figcaption class="meta"><h3>AI Market HeatMap Analyzer</h3><p>Phân tích bản đồ nhiệt</p></figcaption>
-          </a>
-        </figure>
-       
-        <figure class="card">
-          <a href="https://ai.studio/apps/drive/1IibfUooQxexKXluni4esjKKd54HHuAim" target="_blank">
-            <img src="img/3.png" alt="Ảnh 1" />
-            <figcaption class="meta"><h3>AI_ Crypto-Forex Fixed Time</h3><p>AI Phân Tích Biểu Đồ FTT</p></figcaption>
-          </a>
-        </figure>
-      </section>
-    </main>
-  </div>
-    
+            <figure class="card">
+                <a href="https://ai.studio/apps/drive/18XwUEaP2pRpkTSOrwHmvAIbzoPFp2YUs" target="_blank">
+                    <img src="img/6.png" alt="Ảnh 5" />
+                    <figcaption class="meta"><h3>AI Market HeatMap Analyzer</h3><p>Phân tích bản đồ nhiệt</p></figcaption>
+                </a>
+                </figure>
+                
+                <figure class="card">
+                <a href="https://ai.studio/apps/drive/1IibfUooQxexKXluni4esjKKd54HHuAim" target="_blank">
+                    <img src="img/3.png" alt="Ảnh 1" />
+                    <figcaption class="meta"><h3>AI_ Crypto-Forex Fixed Time</h3><p>AI Phân Tích Biểu Đồ FTT</p></figcaption>
+                </a>
+                </figure>
+            </section>
+        </main>
+    </div>
+        
     <div id="linkModal" class="modal">
         <div class="modal-content">
             <span class="close-button">&times;</span>
             <h3>Chọn phiên bản AI Analyzer:</h3>
-            <a href="https://ai.studio/apps/drive/1kaE1gZFDWzfv4upMFcFrgSC72qrYZQ_P" target="_blank" class="modal-link-button">
+            <a href="https://ai.studio/apps/drive/1kaE1gZFDWzfv4upMFcFrgSC72qrYZQ_P" target="_blank" class="modal-link-button" id="link1-button">
                 🚀 AI Analyzer VIP
             </a>
-            <a href="https://ai.studio/apps/drive/19UXP1IbhkWXOblVnWWaNVLaX1TA0ZR6f" target="_blank" class="modal-link-button">
-                🌟 AI Analyzer SUPPER
+            <a href="https://ai.studio/apps/drive/19UXP1IbhkWXOblVnWWaNVLaX1TA0ZR6f" target="_blank" class="modal-link-button" id="link2-button">
+                🌟 AI Analyzer SUPERPRO
             </a>
         </div>
     </div>
 
     <script>
         // Lấy các phần tử cần thiết
-        const image5 = document.getElementById('image5');
+        const imageLink = document.getElementById('image5-link'); // Thẻ <a> của ảnh đầu tiên
         const modal = document.getElementById('linkModal');
-        // Lấy nút đóng (x) - lưu ý là class, nên lấy phần tử đầu tiên
         const closeButton = document.getElementsByClassName('close-button')[0]; 
+        
+        // Lấy hai nút link trong Modal
+        const link1Button = document.getElementById('link1-button');
+        const link2Button = document.getElementById('link2-button');
 
-        // 1. Khi click vào hình ảnh (image5), hiển thị Modal
-        image5.onclick = function() {
+
+        // 1. Khi click vào thẻ <a>, ngăn chuyển hướng và hiển thị Modal
+        imageLink.onclick = function(event) {
+            event.preventDefault(); // Rất quan trọng: Ngăn chặn link chuyển hướng mặc định
+            
+            // Lấy link từ thẻ <a> và thuộc tính data-link2
+            const link1 = imageLink.getAttribute('href');
+            const link2 = imageLink.getAttribute('data-link2');
+            
+            // Cập nhật href cho các nút trong Modal trước khi hiển thị
+            link1Button.href = link1;
+            link2Button.href = link2;
+
             modal.style.display = 'block';
         }
 
