@@ -59,6 +59,63 @@
       .gallery{grid-template-columns:repeat(1,1fr)}
       .card img{height:280px}
     }
+    /* Phong cách cho Modal (Popup) */
+.modal {
+    display: none; /* Ẩn Modal mặc định */
+    position: fixed; /* Giữ vị trí cố định trên màn hình */
+    z-index: 1000; /* Đảm bảo Modal nằm trên các nội dung khác */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4); /* Nền mờ */
+}
+
+/* Nội dung bên trong Modal */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* Canh giữa theo chiều dọc và chiều ngang (15% từ trên) */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Chiều rộng Modal */
+    max-width: 400px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+}
+
+/* Nút đóng (x) */
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Phong cách cho các nút Link */
+.modal-link-button {
+    display: block; /* Mỗi link/nút trên một dòng */
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    margin: 10px 0;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.modal-link-button:hover {
+    background-color: #0056b3;
+}
   </style>
 </head>
 <body>
@@ -69,17 +126,46 @@
         <h1>AI Chart Analyzer</h1>
         <p class="lead">Muốn bay cao? Hãy chịu được gió lớn.</p>
       </div>
-     
+     // Lấy các phần tử cần thiết
+const image5 = document.getElementById('image5');
+const modal = document.getElementById('linkModal');
+const closeButton = document.getElementsByClassName('close-button')[0];
+
+// Khi click vào hình ảnh, hiển thị Modal
+image5.onclick = function() {
+    modal.style.display = 'block';
+}
+
+// Khi click vào nút đóng (x), ẩn Modal
+closeButton.onclick = function() {
+    modal.style.display = 'none';
+}
+
+// Khi click ra ngoài khu vực Modal, ẩn Modal
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+}
     </header>
 
     <main>
-      <section class="gallery" aria-label="AI Chart Analyzer mini">
-          <figure class="card">
-          <a href="https://ai.studio/apps/drive/1kaE1gZFDWzfv4upMFcFrgSC72qrYZQ_P" target="_blank">
-            <img src="img/5.PNG" alt="Ảnh 5" />
-            <figcaption class="meta"><h3>AI Analyzer VIP</h3><p></p></figcaption>
-          </a>
-        </figure>
+      
+        <section class="gallery" aria-label="AI Chart Analyzer mini">
+    <figure class="card">
+        <img src="img/5.PNG" alt="Ảnh 5" id="image5" style="cursor: pointer;" />
+        <figcaption class="meta"><h3>AI Analyzer VIP</h3><p></p></figcaption>
+    </figure>
+</section>
+
+<div id="linkModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h3>Chọn liên kết bạn muốn truy cập:</h3>
+        <a href="https://ai.studio/apps/drive/1kaE1gZFDWzfv4upMFcFrgSC72qrYZQ_P" target="_blank" class="modal-link-button">Analyzer VIP</a>
+        <a href="https://ai.studio/apps/drive/19UXP1IbhkWXOblVnWWaNVLaX1TA0ZR6f" target="_blank" class="modal-link-button">Analyzer SUPERPRO</a>
+    </div>
+</div>
           <figure class="card">
           <a href="https://ai.studio/apps/drive/1Hz6jQhdu3tW5feKCr7d6L_oRQ8qBjrd9" target="_blank">
             <img src="img/5.PNG" alt="Ảnh 5" />
